@@ -24,7 +24,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static ru.hehmdalolkek.productaggregator.util.ClientUtil.getPersistedClientJoe;
-import static ru.hehmdalolkek.productaggregator.util.ClientUtil.getPersistedClientJohn;
 import static ru.hehmdalolkek.productaggregator.util.ProductUtil.getPersistedProduct1;
 import static ru.hehmdalolkek.productaggregator.util.ProductUtil.getTransientProduct1;
 
@@ -61,6 +60,7 @@ class ProductServiceImplTest {
         assertThat(result.getId()).isEqualTo(persistedProduct.getId());
         assertThat(result.getTitle()).isEqualTo(persistedProduct.getTitle());
         assertThat(result.getPrice()).isEqualTo(persistedProduct.getPrice());
+        assertThat(result.getCreatedAt()).isEqualTo(persistedProduct.getCreatedAt());
         verify(this.productRepository, times(1))
                 .save(any(Product.class));
         verifyNoMoreInteractions(this.productRepository);
@@ -149,6 +149,7 @@ class ProductServiceImplTest {
         assertThat(result.getId()).isEqualTo(persistedProduct.getId());
         assertThat(result.getTitle()).isEqualTo(persistedProduct.getTitle());
         assertThat(result.getPrice()).isEqualTo(persistedProduct.getPrice());
+        assertThat(result.getCreatedAt()).isEqualTo(persistedProduct.getCreatedAt());
         verify(this.productRepository, times(1))
                 .findOne(any(Predicate.class));
         verifyNoMoreInteractions(this.productRepository);

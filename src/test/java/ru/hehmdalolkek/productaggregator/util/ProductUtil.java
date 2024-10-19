@@ -4,6 +4,7 @@ import ru.hehmdalolkek.productaggregator.model.Client;
 import ru.hehmdalolkek.productaggregator.model.Product;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * Util class to get persistent and transient clients.
@@ -22,6 +23,7 @@ public class ProductUtil {
         product.setTitle("product1");
         product.setPrice(BigDecimal.valueOf(1000));
         product.setClient(client);
+        product.setCreatedAt(LocalDateTime.now());
         return product;
     }
 
@@ -35,6 +37,7 @@ public class ProductUtil {
         product.setTitle("product2");
         product.setPrice(BigDecimal.valueOf(2000));
         product.setClient(client);
+        product.setCreatedAt(LocalDateTime.now());
         return product;
     }
 
@@ -48,6 +51,7 @@ public class ProductUtil {
         product.setTitle("product3");
         product.setPrice(BigDecimal.valueOf(3000));
         product.setClient(client);
+        product.setCreatedAt(LocalDateTime.now());
         return product;
     }
 
@@ -59,6 +63,7 @@ public class ProductUtil {
         product.setTitle("product1");
         product.setPrice(BigDecimal.valueOf(1000));
         product.setClient(client);
+        product.setCreatedAt(LocalDateTime.now());
         return product;
     }
 
@@ -70,6 +75,7 @@ public class ProductUtil {
         product.setTitle("product2");
         product.setPrice(BigDecimal.valueOf(2000));
         product.setClient(client);
+        product.setCreatedAt(LocalDateTime.now());
         return product;
     }
 
@@ -81,6 +87,7 @@ public class ProductUtil {
         product.setTitle("product3");
         product.setPrice(BigDecimal.valueOf(3000));
         product.setClient(client);
+        product.setCreatedAt(LocalDateTime.now());
         return product;
     }
 
