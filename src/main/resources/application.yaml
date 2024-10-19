@@ -8,3 +8,19 @@ spring:
     url: jdbc:postgresql://localhost:5432/product-aggregator-db
     username: postgres
     password: postgres
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+broker:
+  kafka:
+    topics:
+      product-creation: products-creation-topic
+
+scheduler:
+  products:
+    send:
+      rate:
+        seconds: 3600
