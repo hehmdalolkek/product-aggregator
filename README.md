@@ -24,6 +24,6 @@ with name=product-aggregator-db.
 otherwise use the IntelliJ IDEA run.
 ```
     mvn package
-    java -jar target/product-aggregator-1.0-SNAPSHOT.jar
+    java -jar target/product-aggregator-0.0.1-SNAPSHOT.jar
 ```
 4. App will be available at http://localhost:8080.
