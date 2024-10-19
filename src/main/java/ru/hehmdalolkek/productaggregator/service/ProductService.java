@@ -28,6 +28,14 @@ public interface ProductService {
     List<Product> getAllProductsByClientId(Long clientId);
 
     /**
+     * Retrieve all <code>Product</code>s that were created in the last <code>seconds</code> from the data store.
+     *
+     * @param seconds value of seconds
+     * @return list of <code>Product</code>
+     */
+    List<Product> getAllProductsCreatedAtLastSeconds(long seconds);
+
+    /**
      * Retrieve the <code>Product</code> by id from the data store.
      *
      * @param productId id to search for <code>Product</code>

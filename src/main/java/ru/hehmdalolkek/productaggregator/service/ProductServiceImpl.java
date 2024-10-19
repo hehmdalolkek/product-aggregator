@@ -13,6 +13,7 @@ import ru.hehmdalolkek.productaggregator.model.QProduct;
 import ru.hehmdalolkek.productaggregator.repository.ClientRepository;
 import ru.hehmdalolkek.productaggregator.repository.ProductRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.StreamSupport;
@@ -74,6 +75,22 @@ public class ProductServiceImpl implements ProductService {
         }
         Iterable<Product> products =
                 this.productRepository.findAll(QProduct.product.client.id.eq(clientId));
+        return StreamSupport.stream(products.spliterator(), false)
+                .toList();
+    }
+
+    /**
+     * Retrieve all <code>Product</code>s that were created in the last <code>seconds</code> from the data store.
+     * Will return an empty list if no products is found.
+     *
+     * @param seconds value of seconds
+     * @return list of <code>Product</code>
+     */
+    @Override
+    @Transactional
+    public List<Product> getAllProductsCreatedAtLastSeconds(long seconds) {
+        LocalDateTime extremeTime = LocalDateTime.now().minusSeconds(seconds);
+        Iterable<Product> products = this.productRepository.findAll(QProduct.product.createdAt.after(extremeTime));
         return StreamSupport.stream(products.spliterator(), false)
                 .toList();
     }

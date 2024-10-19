@@ -24,8 +24,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static ru.hehmdalolkek.productaggregator.util.ClientUtil.getPersistedClientJoe;
-import static ru.hehmdalolkek.productaggregator.util.ProductUtil.getPersistedProduct1;
-import static ru.hehmdalolkek.productaggregator.util.ProductUtil.getTransientProduct1;
+import static ru.hehmdalolkek.productaggregator.util.ProductUtil.*;
 
 /**
  * Unit test for {@link ProductServiceImpl}.
@@ -130,6 +129,26 @@ class ProductServiceImplTest {
                 .hasMessage("Client with id=%d not found.".formatted(clientId));
         verify(this.clientRepository, times(1))
                 .exists(any(Predicate.class));
+        verifyNoMoreInteractions(this.productRepository, this.clientRepository);
+    }
+
+    @Test
+    @DisplayName("Test getAllProductsCreatedAtLastSeconds() success functionality")
+    void givenSeconds_whenGetAllProductsCreatedAtLastSeconds_thenReturnsProducts() {
+        // given
+        long seconds = 60 * 60;
+        Product product1 = getPersistedProduct1();
+        Product product2 = getPersistedProduct2();
+        List<Product> products = List.of(product1, product2);
+        when(this.productRepository.findAll(any(Predicate.class)))
+                .thenReturn(products);
+        // when
+        List<Product> result = this.productService.getAllProductsCreatedAtLastSeconds(seconds);
+
+        // then
+        assertThat(result).isEqualTo(products);
+        verify(this.productRepository, times(1))
+                .findAll(any(Predicate.class));
         verifyNoMoreInteractions(this.productRepository, this.clientRepository);
     }
 
