@@ -1,5 +1,8 @@
 package ru.hehmdalolkek.productaggregator.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +22,11 @@ import java.util.Objects;
 @Getter
 public class Products {
 
+    @NotBlank
+    @Size(min = 3)
     private String title;
 
+    @NotNull
     private BigDecimal totalCost;
 
     @Override

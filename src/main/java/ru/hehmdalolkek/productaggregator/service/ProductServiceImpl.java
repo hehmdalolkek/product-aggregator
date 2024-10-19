@@ -3,9 +3,10 @@ package ru.hehmdalolkek.productaggregator.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import ru.hehmdalolkek.productaggregator.exception.ClientNotFoundException;
-import ru.hehmdalolkek.productaggregator.exception.ProductNotFoundException;
 import ru.hehmdalolkek.productaggregator.exception.ProductIsAlreadyExistsException;
+import ru.hehmdalolkek.productaggregator.exception.ProductNotFoundException;
 import ru.hehmdalolkek.productaggregator.model.Product;
 import ru.hehmdalolkek.productaggregator.model.QClient;
 import ru.hehmdalolkek.productaggregator.model.QProduct;
@@ -23,6 +24,7 @@ import java.util.stream.StreamSupport;
  */
 @Service
 @RequiredArgsConstructor
+@Validated
 public class ProductServiceImpl implements ProductService {
 
     /**

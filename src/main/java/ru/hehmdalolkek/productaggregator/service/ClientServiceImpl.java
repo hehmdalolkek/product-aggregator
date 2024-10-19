@@ -3,8 +3,9 @@ package ru.hehmdalolkek.productaggregator.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.hehmdalolkek.productaggregator.exception.ClientNotFoundException;
+import org.springframework.validation.annotation.Validated;
 import ru.hehmdalolkek.productaggregator.exception.ClientIsAlreadyExistsException;
+import ru.hehmdalolkek.productaggregator.exception.ClientNotFoundException;
 import ru.hehmdalolkek.productaggregator.model.Client;
 import ru.hehmdalolkek.productaggregator.model.QClient;
 import ru.hehmdalolkek.productaggregator.repository.ClientRepository;
@@ -19,6 +20,7 @@ import java.util.Objects;
  */
 @Service
 @RequiredArgsConstructor
+@Validated
 public class ClientServiceImpl implements ClientService {
 
     /**

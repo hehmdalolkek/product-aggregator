@@ -1,6 +1,9 @@
 package ru.hehmdalolkek.productaggregator.model;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +23,12 @@ import java.util.Objects;
 @Entity
 public class Client extends AbstractEntity {
 
+    @NotBlank
+    @Size(min = 2)
     private String username;
 
+    @NotBlank
+    @Email
     private String email;
 
     @Override
