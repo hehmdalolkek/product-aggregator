@@ -8,6 +8,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/product-aggregator-db
     username: postgres
     password: postgres
+  jpa:
+    generate-ddl: true
   kafka:
     bootstrap-servers: localhost:9092
     producer:
