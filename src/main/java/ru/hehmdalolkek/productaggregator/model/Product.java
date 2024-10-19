@@ -20,12 +20,15 @@ import java.util.Objects;
 @NoArgsConstructor
 @Setter
 @Getter
+@Entity
 public class Product extends AbstractEntity {
 
     private String title;
 
     private BigDecimal price;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
     private Client client;
 
     @Override
